@@ -32,7 +32,7 @@ class Player():
 
     '''
 
-    def __init__(self, name, gp1, gp2, gp3, points, placement, team='', num=0, sum=False):
+    def __init__(self, name, gp1, gp2, gp3, points, placement=0, team='', num=0, sum=False):
 
         # creates list for att_clean
         check = [gp1, gp2, gp3, points, placement]
@@ -144,6 +144,53 @@ class PlayerAll(Player):
             t += team + ' '
 
         return self.name + '\n' + t
+
+
+class PlayerAPI(Player):
+
+    def __init__(self, name, gp1, gp2, gp3, points,
+                 mii, race_scores, race_positions, flag,
+                 placement=0, team='', num=0, sum=False,):
+
+        Player.__init__(self=self, name=name, team=team, gp1=gp1,
+                        gp2=gp2, gp3=gp3, points=points,
+                        placement=[placement], num=num, sum=sum)
+
+        self.mii = mii
+        self.race_scores = race_scores
+        self.race_positions = race_positions
+        self.flag = flag
+
+
+class PlayerAPIALL(PlayerAPI):
+
+    def __init__(self, name, team, gp1, gp2, gp3, points,
+                 mii, race_scores, race_positions, flag, id,
+                 placement=0, num=0, sum=True):
+
+        PlayerAPI.__init__(self, name=name, team=team, gp1=[gp1], gp2=[gp2], gp3=[gp3],
+                   points=[points], mii=[mii], race_scores=[race_scores],
+                   race_positions=[race_positions], flag=flag,
+                   placement=[placement], num=[num], sum=sum)
+
+        self.id=id
+
+    def update(self, player):
+        ''' updates player_all object with new match info
+
+        Arguments:
+            player (player obj): player object from new match
+        '''
+
+        # adds new stats to player_all object
+        self.num.append(player.num)
+        self.gp1.append(player.gp1)
+        self.gp2.append(player.gp2)
+        self.gp3.append(player.gp3)
+        self.points.append(player.points)
+        self.placement.append(player.placement)
+        self.race_scores.append(player.race_scores)
+        self.race_positions.append(player.race_scores)
 
 # ONE INSTANCE of a team (i.e. Daisy playing match #7 against XI)
 class Team():
@@ -281,21 +328,13 @@ class Match():
 
         return df
 
-# DEPENDENT ON S5
-class Race():
+class MatchAPI(Match):
 
-    def __init__(self, number, course, first, second, third, fourth, fifth,
-                 sixth, seventh, eighth, ninth, tenth):
-        self.number = number
-        self.course = course
-        self.first = first
-        self.second = second
-        self.third = third
-        self.fourth = fourth
-        self.fifth = fifth
-        self.sixth = sixth
-        self.seventh = seventh
-        self.eighth = eighth
-        self.ninth = ninth
-        self.tenth = tenth
+    def __init__(self, name, t1, t2, t1t, t2t, t1p, t2p, players, dif, id,
+                 races, df=[]):
 
+        Match.__init__(self=self, name=name, date='', num=0, t1=t1, t2=t2,
+              t1t=t1t, t2t=t2t, t1p=t1p, t2p=t2p, players=players,
+              dif=dif, id=id)
+
+        self.races = races

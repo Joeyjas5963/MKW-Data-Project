@@ -1,9 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from collections import defaultdict
 from MKOBJECT import Player, Team, Match
 from MKOBJECT import PlayerAll, TeamAll
 import csv
+import plotly.express as px
+import plotly.graph_objs as go
 
 # DATA COLLECTION AND OBJECT CREATION
 
@@ -229,8 +232,10 @@ def average(player_alls_D):
 
     '''
 
+    avg_dict = {}
+
     # iterates through each player_alls lists
-    for player_alls in player_alls_D:
+    for player_alls in player_alls_D[1:]:
         # iterates through each player
         for player in player_alls:
 
@@ -238,8 +243,14 @@ def average(player_alls_D):
             print(player.name)
             if '/' not in player.name:
                 avg = sum(player.points) / len(player.points) / 3
-                player.avg = format(avg, '.1f')
+                player.avg = float(format(avg, '.1f'))
                 print(player.avg)
+                if player.avg < 50:
+                    avg_dict[player.name] = player.avg
+
+    ds = pd.Series(avg_dict)
+
+    print(ds.sort_values(ascending=False).to_string())
 
 def perfect(matches_D):
     ''' Searches all matches for "perfect" wars
@@ -280,6 +291,7 @@ def perfect(matches_D):
 
     return perfect_matches
 
+
 def top_scores(matches_D):
     ''' Creates dataframe of top scores for season
 
@@ -313,6 +325,7 @@ def top_scores(matches_D):
     df_top = pd.DataFrame(df_dict).sort_values('Score', ascending=False)
     print(df_top.to_string())
 
+
 def score_dist(matches_D):
     ''' creates distribution of runner scores
 
@@ -340,7 +353,69 @@ def score_dist(matches_D):
 
     # plot and show histogram
     plt.hist(scores, bins=bins)
+    plt.title('Runner Score Distribution Across GSC')
+    plt.xlabel('Scores')
+    plt.ylabel('Frequency')
     plt.show()
+
+
+def wins_five(matches_d, t_ids_d):
+
+    teams = {}
+
+    div = 0
+    t_ids_d = t_ids_d[1:]
+    for t_ids in t_ids_d:
+        div += 1
+        for team in t_ids.keys():
+            r = {'w': 0, 'l': 0, 'rate': 0}
+            record = [0]
+            print(team)
+            for match in matches_d[div]:
+                if match.t1.name == team:
+                    r['w'] += 1
+                if match.t2.name == team:
+                    r['l'] += 1
+
+                if match.t1.name == team or match.t2.name == team:
+                    r['rate'] = r['w'] - (r['l'])
+                    print(r)
+                    record.append(r['rate'])
+
+            teams[team] = record
+
+    div = 0
+    for t_ids in t_ids_d:
+
+        df = pd.DataFrame()
+        fig = go.Figure()
+        div += 1
+
+        hovertext = ['Match' + str(x) for x in range(0, 11)]
+
+        for team in t_ids.keys():
+
+            df.loc[:, team] = teams[team]
+            fig.add_trace(go.Scatter(x=df.index.values, y=df[team],
+                                    name=team, line=dict(width=4)))
+
+        fig.add_hline(y=0)
+        fig.update_traces(hoverinfo='name+y')
+        fig.update_layout(hovermode='x unified', xaxis = dict(
+                            tickmode='linear',
+                            tick0=0,
+                            dtick=1))
+        fig.update_xaxes(title_text='Match')
+        fig.update_yaxes(title_text='Wins - Losses')
+        fig.update_layout(title={'text': f'Wins Above .500 (D{div})'}, legend_title_text='Teams')
+
+
+        fig.show()
+
+        fig.write_html(f'C:/Users/joeyj/Desktop/Div{div}.html')
+
+    print(teams)
+
 
 def main():
 
@@ -364,12 +439,15 @@ def main():
         print(f'Collected D{div}')
 
     # Commentable functions
-    #average(player_alls)
+    average(player_alls_D)
     #perfect(matches_D)
-    top_scores(matches_D)
+    #top_scores(matches_D)
     #score_dist(matches_D)
+    #wins_five(matches_D, t_ids_D)
 
 
     #print(len(matches_D[6][30].players))
+    #print(t_ids_D[5])
+
 main()
 
