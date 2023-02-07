@@ -28,19 +28,19 @@ TRACKS = {"Wii Luigi Circuit": 'LC',
           "Wii Rainbow Road": 'RR',
           "GCN Peach Beach": 'rPB',
           "DS Yoshi Falls": 'rYF',
-          "SNES Ghost Valley 2": 'GV2',
+          "SNES Ghost Valley 2": 'rGV2',
           "N64 Mario Raceway": 'rMR',
           "N64 Sherbet Land": 'rSL',
-          "GBA Shy Guy Beach": 'SGB',
-          "DS Delfino Square": 'DSDS',
+          "GBA Shy Guy Beach": 'rSGB',
+          "DS Delfino Square": 'rDS',
           "GCN Waluigi Stadium": 'rWS',
           "DS Desert Hills": 'rDH',
-          "GBA Bowser Castle 3": 'BC3',
-          "N64 DK's Jungle Parkway": 'DKJP',
+          "GBA Bowser Castle 3": 'rBC3',
+          "N64 DK's Jungle Parkway": 'rDKJP',
           "GCN Mario Circuit": 'rMC',
           "SNES Mario Circuit 3": 'MC3',
           "DS Peach Gardens": 'rPG',
-          "GCN DK Mountain": 'DKM',
+          "GCN DK Mountain": 'rDKM',
           "N64 Bowser's Castle": 'rBC'}
 
 
@@ -104,7 +104,10 @@ def db_crucial(p_data, t_data):
     return df_player, df_team
 
 
-def read(file, num=0):
+def read(file, num=0, manual=False):
+
+    if manual:
+        print('MANUAL')
 
     matches = []
 
@@ -123,12 +126,15 @@ def read(file, num=0):
 
                 dct = json.loads(string)
 
+                print(dct)
+
                 tracks = dct['tracks']
 
                 for i in range(len(tracks)):
                     tracks[i] = TRACKS[tracks[i]]
 
                 teams = dct['teams']
+
                 both = []
 
                 for key in teams:
@@ -139,6 +145,16 @@ def read(file, num=0):
 
                     for fc, entry in df['players'].items():
                         key_num += 1
+
+                        if manual:
+                            k = -1
+                            for i in range(len(entry['gp_scores'])):
+                                for j in range(len(entry['gp_scores'][i])):
+                                    k += 1
+                                    entry['gp_scores'][i][j] = int(entry['gp_scores'][i][j])
+                                    entry['race_scores'][k] = int(entry['race_scores'][k])
+
+                            entry['total_score'] = int(entry['total_score'])
 
                         player = PlayerAPI(entry['lounge_name'],
                                            sum(entry['gp_scores'][0]),
@@ -152,7 +168,9 @@ def read(file, num=0):
                                            entry['flag'],
                                            team=key, num=num, sum=True)
 
-                        if entry['subbed_out']:
+                        if entry['subbed_out'] and type(entry['subbed_out']) != str:
+                            player.sub_out = True
+                        elif entry['subbed_out'] == 'TRUE':
                             player.sub_out = True
 
                         players.append(player)
@@ -227,6 +245,8 @@ def summarize(matches, df_player, df_team):
 
                     if player.name not in player_names:
 
+
+
                         # create player_all object for this player
                         p = PlayerAPIALL(player.name, df_player.iloc[i, 3], player.team,
                                          player.gp1, player.gp2, player.gp3, player.points,
@@ -295,7 +315,7 @@ def api_crucial():
         m, m_num = read('GSCD' + str(num) + '.txt', m_num)
         matches += m
 
-    addon = read('blank.txt', m_num)
+    addon = read('blank.txt', m_num, manual=True)
     addon = addon[0]
     matches += addon
 
@@ -311,6 +331,3 @@ def debug():
     tag_names = []
     for player in player_alls:
         tag_names.append(player.tag_name)
-
-    for tn in tag_names:
-        print(tn)

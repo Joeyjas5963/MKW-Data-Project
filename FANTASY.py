@@ -12,40 +12,28 @@ def load_qdf(file):
     return df
 
 
-def player_calc(df_player, player_alls, p_ids, week):
+def player_calc(df_player, player_all, week):
 
     m = week * 2
-    error_list = []
-    found = []
 
-    for row in range(len(df_player)):
-        name = df_player.iloc[row, 3]
-        if name not in p_ids.keys():
-            error_list.append(name)
-            #print('ERROR: ', name)
-            pass
-        else:
-            player_all = player_alls[p_ids[name]]
-            found.append(player_all.base_id)
-            player_all.fantasy_spread = defaultdict(lambda: [])
+    for x in range(len(df_player)):
+        player_all.fantasy_spread = defaultdict(lambda: [])
 
-            player_all.fantasy = sum(player_all.points)
-            player_all.fantasy_spread['Earned'] += player_all.points
+        player_all.fantasy = sum(player_all.points)
+        player_all.fantasy_spread['Earned'] += player_all.points
 
-            if len(player_all.points) != m:
-                player_all.fantasy += 45 * (m - len(player_all.points))
-                for i in range(m - len(player_all.points)):
-                    player_all.fantasy_spread['Benched'].append(45)
+        if len(player_all.points) != m:
+            player_all.fantasy += 45 * (m - len(player_all.points))
+            for i in range(m - len(player_all.points)):
+                player_all.fantasy_spread['Benched'].append(45)
 
-            for scores in player_all.race_scores:
-                for score in scores:
-                    if score < 2:
-                        player_all.fantasy += 4
-                        player_all.fantasy_spread['Bagged'].append(4)
+        for scores in player_all.race_scores:
+            for score in scores:
+                if score < 2:
+                    player_all.fantasy += 4
+                    player_all.fantasy_spread['Bagged'].append(4)
 
-            player_all.fantasy_spread = dict(player_all.fantasy_spread)
-
-    return player_alls, found
+        player_all.fantasy_spread = dict(player_all.fantasy_spread)
 
 
 def leaderboard(player_alls):
@@ -56,7 +44,8 @@ def leaderboard(player_alls):
         score[player_all.name] = player_all.fantasy
 
     ds_leaderboard = pd.Series(score).sort_values(ascending=False)
-    print(ds_leaderboard.to_string())
+
+    return ds_leaderboard
 
 
 def quick_calc(player_alls, p_ids, df_quick, week):
@@ -106,10 +95,6 @@ def quick_check(df_quick, df_quick_num, draft):
         if df_quick.iloc[i, 0] == draft:
             picks = df_quick.iloc[i, :]
 
-    print(draft)
-    print(nums)
-    print(picks)
-
     df_draft = pd.DataFrame()
     df_draft['Picks'] = picks
     df_draft['Points'] = nums
@@ -129,7 +114,8 @@ def fantasy_crucial():
     df_quick = load_qdf('quick.csv')
     matches, player_alls, team_alls, p_ids, t_ids, df_player, df_team = api_crucial()
 
-    player_alls, found = player_calc(df_player, player_alls, p_ids, week)
+    for player_all in player_alls:
+        player_calc(df_player, player_all, week)
 
     return df_quick, player_alls, p_ids, week
 
@@ -139,12 +125,13 @@ def fantasy_main():
     df_quick, player_alls, p_ids, week = fantasy_crucial()
 
     leaderboard(player_alls)
-    player_alls[p_ids['Ω Weexy']].show_fantasy()
+    player_alls[p_ids['XI Fox']].show_fantasy()
 
     df_quick_num = quick_calc(player_alls, p_ids, df_quick, week)
     print(df_quick_num.to_string())
 
     quick_check(df_quick, df_quick_num, 'Sam G')
+
 
 
 

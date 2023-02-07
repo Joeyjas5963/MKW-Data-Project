@@ -24,7 +24,8 @@ place_to_point = {1: 15,
                   8: 2,
                   9: 1,
                   10: 0,
-                  None: 0}
+                  None: 0,
+                  -1: 0}
 
 
 # ONE INSTANCE of a player (i.e. EmilP in match #7 against XI)
@@ -375,7 +376,12 @@ class Match():
             else:
                 df.iloc[i, -2] = 'Sub'
 
-        df = df.sort_values(by=['Team', 'Total'], ascending=False)
+        if [self.t1.name, self.t2.name] == sorted([self.t1.name, self.t2.name]):
+            asc = True
+        else:
+            asc = False
+
+        df = df.sort_values(by=['Team', 'Total'], ascending=asc)
         df = df.iloc[:, :-1]
 
         return df
@@ -400,6 +406,8 @@ class MatchAPI(Match):
 
                 drop = player
                 team_name = player.team
+                print('sub found')
+                print(player, player.sub_out)
 
                 if self.t1.name == team_name:
                     team = self.t1
@@ -408,28 +416,43 @@ class MatchAPI(Match):
 
                 for mate in team.players:
                     if drop.race_positions.count(None) + \
-                            mate.race_positions.count(None) == 12:
+                            mate.race_positions.count(None) == 12 or \
+                            drop.race_positions.count(-1) + \
+                            mate.race_positions.count(-1) == 12:
                         if drop.race_positions != mate.race_positions:
 
-                            '''
+
                             print(drop)
                             print('Subbed Out')
                             print(drop.race_scores)
+                            print(mate)
                             print('Subbed In')
                             print(mate.race_scores)
-                            '''
+
                             for i in range(len(drop.race_scores)):
                                 drop.race_scores[i] = place_to_point[drop.race_positions[i]]
 
-                            after = len([i for i in drop.race_positions if i])
+                            if drop.race_positions.count(-1) + mate.race_positions.count(-1) == 12:
+                                after = len([i for i in drop.race_positions if i != -1])
+                                print(after)
+                                drop.race_scores = drop.race_scores[:after] + list(np.zeros((12 - after), dtype=int))
+
+                                drop.gp1 = sum(drop.race_scores[0:4])
+                                drop.gp2 = sum(drop.race_scores[4:8])
+                                drop.gp3 = sum(drop.race_scores[8:])
+
+                            else:
+                                after = len([i for i in drop.race_positions if i])
 
                             mate.race_scores = list(np.zeros(after, dtype=int)) + mate.race_scores[after:]
+
                             mate.gp1 = sum(mate.race_scores[0:4])
                             mate.gp2 = sum(mate.race_scores[4:8])
                             mate.gp3 = sum(mate.race_scores[8:])
                             mate.points = sum(mate.race_scores)
                             mate.sub_in = True
                             break
+
 
 
 

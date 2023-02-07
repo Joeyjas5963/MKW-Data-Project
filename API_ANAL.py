@@ -132,9 +132,7 @@ def main():
 
     #track_picks(matches)
     print(matches[-1])
-    df = matches[-1].match_df().sort_values(by=['Team', 'Total'], ascending=False)
-    print(df.loc[:, 'Total'].sort_values())
-    #match_graph(matches[-1], df_team)
+    match_graph(matches[-1], df_team)
 
 
 main()
