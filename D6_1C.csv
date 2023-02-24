@@ -1,0 +1,26 @@
+D6_1C,,,,,,,,,,,,,,,,,
+RISE,Penalty 0,442,,,,,,,,,,,,,,,
+XII,Penalty 0,290,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,Wii Dry Dry Ruins,Wii Bowser's Castle,Wii Wario's Gold Mine,N64 Sherbet Land,N64 Bowser's Castle,Wii Toad's Factory,Wii Moonview Highway,GBA Bowser Castle 3,Wii Maple Treeway,DS Delfino Square,Wii Moo Moo Meadows,GCN Waluigi Stadium
+AceBeaton,1509-2398-3863,Ace,RISE,145,subbed_out,1,1,5,5,1,2,2,3,1,2,2,1
+zyr,1122-7058-1860,zyr,RISE,125,subbed_out,6,4,2,2,2,1,1,8,2,1,1,7
+Nxvy,2540-0422-9287,Nxvy,RISE,101,subbed_out,2,7,1,1,4,5,7,5,3,4,7,2
+2D,4902-2779-3074,2D,RISE,69,subbed_out,3,6,7,3,3,6,8,9,7,3,4,6
+Davidd,3313-1275-7591,David,RISE,2,subbed_out,10,9,9,10,10,10,10,10,10,10,10,10
+Lancome,0607-3120-4685,Ale,XII,89,subbed_out,7,2,3,4,5,3,3,4,9,9,3,3
+Bonclay,1638-1068-3231,Airko,XII,71,subbed_out,4,3,6,8,6,7,4,1,4,5,9,8
+Disponsible,3012-4807-5785,leToit,XII,61,subbed_out,5,8,4,6,7,8,6,2,5,8,6,4
+AstroboyZ,4472-7661-8154,Astro,XII,50,subbed_out,8,5,8,7,8,4,5,7,8,6,5,5
+VLok,2540-0466-1846,VLok,XII,19,subbed_out,9,10,10,9,9,9,9,6,6,7,8,9
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+Team 1/2,Use team name on table bot (technically the tag),,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

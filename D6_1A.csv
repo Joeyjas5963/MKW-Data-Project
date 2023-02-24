@@ -1,0 +1,24 @@
+D6_1A,,,,,,,,,,,,,,,,,
+HK,Penalty 0,377,,,,,,,,,,,,,,,
+XXX,Penalty -5,350,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,Wii Maple Treeway,GBA Bowser Castle 3,DS Peach Gardens,N64 Bowser's Castle,N64 Sherbet Land,Wii Moonview Highway,Wii Dry Dry Ruins,Wii Koopa Cape,Wii Mushroom Gorge,Wii Grumble Volcano,GCN Waluigi Stadium,GCN DK Mountain
+Kitty,0607-3109-0738,mii_name,HK,111,FALSE,4,5,1,4,8,4,1,8,2,4,2,1
+Snoopy,2067-5996-4560,mii_name,HK,98,FALSE,8,7,5,3,4,1,7,1,1,6,4,3
+Pharis,1036-8105-3898,mii_name,HK,94,FALSE,3,8,3,2,3,5,5,6,4,2,8,2
+rhino page,3484-9354-4228,mii_name,HK,72,FALSE,5,4,4,6,5,8,3,4,5,8,3,8
+Goldi,1423-3447-1215,mii_name,HK,1,FALSE,10,9,10,10,10,10,10,10,10,10,10,10
+Vinny,0564-3543-0350,mii_name,XXX,103,FALSE,6,2,2,1,1,2,6,5,6,3,7,5
+Slidair,4726-2424-4356,mii_name,XXX,97,FALSE,2,6,6,7,2,3,2,3,7,1,6,4
+Insane,3227-2277-6058,mii_name,XXX,96,FALSE,1,1,7,5,6,6,8,2,3,5,1,6
+Marco,3871-4803-5945,mii_name,XXX,48,FALSE,7,3,8,8,7,7,4,7,8,7,5,7
+Smoke,1378-4092-6599,mii_name,XXX,11,FALSE,9,10,9,9,9,9,9,9,9,9,9,9
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

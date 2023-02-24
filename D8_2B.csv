@@ -1,0 +1,24 @@
+D8_2B,,,,,,,,,,,,,,,,,
+glw,Penalty 0,404,,,,,,,,,,,,,,,
+???,Penalty 0,328,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,GCN Waluigi Stadium,Bowser's Castle,N64 Bowser's Castle,Wii Toad's Factory,Wii Dry Dry Ruins,GBA Bowser Castle 3,N64 Sherbet Land,Wii Moonview Highway,N64 DK's Jungle Parkway,Wii Wario's Gold Mine,SNES Ghost Valley 2,Wii Grumble Volcano
+Draggy,5031-1166-6793,glw drgy,glw,115,FALSE,6,5,1,4,1,2,3,2,1,3,6,6
+EvsterGaming321,3356-0843-4025,glw EVAN,glw,110,FALSE,5,1,5,5,3,3,7,4,5,1,3,1
+JonnyGER,1595-1552-0142,glw Jonny,glw,109,FALSE,7,8,6,1,6,6,1,1,2,2,1,4
+Sam G,5460-6228-6799,glw SAM G,glw,68,FALSE,4,7,4,8,7,5,4,6,8,5,4,3
+margio,3399-0337-6917,glw◇marg,glw,2,FALSE,9,10,10,10,10,10,10,10,9,10,10,10
+Jackie,3828-5364-8681,??? jackie,???,101,FALSE,1,2,2,3,8,1,5,7,4,6,8,2
+Lemmy,FC0392-5566-7372,??? Lemmy,???,81,FALSE,8,4,7,2,5,8,8,3,3,4,2,5
+mythdragon,0177-8171-7695,??? ★ md,???,78,FALSE,2,3,3,7,2,4,6,5,6,7,7,7
+Bugs Bunny,3441-9851-2491,??? ,???,57,FALSE,3,6,8,6,4,7,2,8,7,8,5,9
+GCN Baby Park,4043-2868-5903,??? Spoon! :o,???,11,FALSE,10,9,9,9,9,9,9,9,10,9,9,8
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

@@ -267,7 +267,8 @@ class TeamAll(Team):
         roster (dict): number of appearances per player
     '''
 
-    def __init__(self, name, gp1, gp2, gp3, pen, score, players, num, dict_id, base_id=0, roster={}):
+    def __init__(self, name, gp1, gp2, gp3, pen, score, players, num, dict_id, base_id=0, roster={},
+                 fantasy=0):
 
         # creates team object using inputs
         Team.__init__(self, name=name, gp1=[gp1], gp2=[gp2],
@@ -278,6 +279,7 @@ class TeamAll(Team):
         self.dict_id = dict_id
         self.base_id = base_id
         self.roster = roster
+        self.fantasy = fantasy
         self.roster_calc()
 
     def __str__(self):
@@ -285,7 +287,6 @@ class TeamAll(Team):
         print(list(self.roster.keys()))
 
         return self.name
-
 
     def update(self, team):
         ''' updates team_all object with new team data
@@ -406,8 +407,6 @@ class MatchAPI(Match):
 
                 drop = player
                 team_name = player.team
-                print('sub found')
-                print(player, player.sub_out)
 
                 if self.t1.name == team_name:
                     team = self.t1
@@ -434,7 +433,6 @@ class MatchAPI(Match):
 
                             if drop.race_positions.count(-1) + mate.race_positions.count(-1) == 12:
                                 after = len([i for i in drop.race_positions if i != -1])
-                                print(after)
                                 drop.race_scores = drop.race_scores[:after] + list(np.zeros((12 - after), dtype=int))
 
                                 drop.gp1 = sum(drop.race_scores[0:4])

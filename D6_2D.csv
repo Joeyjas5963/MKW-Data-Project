@@ -1,0 +1,25 @@
+D6_2D,,,,,,,,,,,,,,,,,
+XII,Penalty -5,370,,,,,,,,,,,,,,,
+Shiny ,Penalty 0,357,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,Wii Maple Treeway,Wii Koopa Cape,GCN DK Mountain ,N64 Bowser's Castle ,N64 Sherbet Land,GCN Waluigi Stadium ,Wii Bowser's Castle ,DS Peach Gardens,Wii Moonview Highway ,Wii Dry Dry Ruins ,GBA Bowser Castle 3,Toad's Factory
+Bonclay,1638-1068-3231,Airko,XII,112,FALSE,3,3,6,6,1,4,1,1,5,1,6,5
+Master67x,1506-6857-0795,mii_name,XII,87,FALSE,8,6,7,1,5,6,7,3,3,3,3,3
+Balou,0736-1550-2183,mii_name,XII,77,FALSE,6,5,4,7,8,5,2,8,2,8,2,4
+Shark,4386-8790-5577,mii_name,XII,68,TRUE,1,4,2,5,2,7,6,4,-1,-1,-1,-1
+Lancome,0607-3120-4685,!,XII,26,FALSE,-1,-1,-1,-1,-1,-1,-1,-1,4,2,8,6
+AstroboyZ,4472-7661-8154,mii_name,XII,5,FALSE,9,10,10,10,10,9,10,9,10,9,10,9
+Hisa,1638-0953-6965,mii_name,Shiny ,128,FALSE,4,1,1,2,3,1,5,7,1,4,5,1
+Eev,3313-1392-2163,mii_name,Shiny ,82,FALSE,2,7,8,8,6,2,4,5,8,6,1,2
+ThouLe,1809-8963-6723,2,Shiny ,70,FALSE,5,8,5,4,4,3,3,6,6,5,7,7
+Tank,2625-9491-8581,T,Shiny ,70,FALSE,7,2,3,3,7,8,8,2,7,7,4,8
+ACANE,4687-5268-4888,mii_name,Shiny ,7,FALSE,10,9,9,9,9,10,9,10,9,10,9,10
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

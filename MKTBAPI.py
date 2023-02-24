@@ -82,7 +82,7 @@ def load_tdb(file):
         df.iloc[14, 3] = 'ßÿ'
         df.iloc[17, 3] = '«♪»'
         df.iloc[20, 3] = 'Berserk'
-        df.iloc[21, 3] = 'Cγ'
+        df.iloc[21, 3] = 'Cγ1'
         df.iloc[22, 3] = 'Σz'
         df.iloc[27, 3] = 'Mι'
         df.iloc[28, 3] = 'beγønd'
@@ -90,7 +90,7 @@ def load_tdb(file):
         df.iloc[30, 3] = 'Lε'
         df.iloc[33, 3] = 'Ω'
         df.iloc[36, 3] = 'λυ'
-        df.iloc[45, 3] = 'Cγ'
+        df.iloc[45, 3] = 'Cγ2'
         df.iloc[53, 3] = 'PΨ'
 
         return df
@@ -184,7 +184,36 @@ def read(file, num=0, manual=False):
                         gp2 += int(p.gp2)
                         gp3 += int(p.gp3)
 
-                    team = Team(key, gp1, gp2, gp3,
+                    if key == '[L]':
+                        if 'D1' in dct['title_str']:
+                            name = '[L]1'
+                        else:
+                            name = '[L]2'
+
+                    elif key == 'HK':
+                        if 'D4' in dct['title_str']:
+                            name = 'HK1'
+                        else:
+                            name = 'HK2'
+
+                    elif key == '@NN':
+                        if 'D4' in dct['title_str']:
+                            name = '@NN1'
+                        else:
+                            name = '@NN2'
+
+                    elif key == 'Cγ':
+                        if 'D4' in dct['title_str']:
+                            name = 'Cγ1'
+                        else:
+                            name = 'Cγ2'
+
+                    elif key == 'Mt':
+                        name = 'Mt.'
+                    else:
+                        name = key
+
+                    team = Team(name, gp1, gp2, gp3,
                                 teams[key]['table_penalty_str'],
                                 int(teams[key]['total_score']),
                                 players, num)
@@ -244,8 +273,6 @@ def summarize(matches, df_player, df_team):
                     player.name = df_player.iloc[i, 2]
 
                     if player.name not in player_names:
-
-
 
                         # create player_all object for this player
                         p = PlayerAPIALL(player.name, df_player.iloc[i, 3], player.team,
@@ -311,7 +338,7 @@ def api_crucial():
 
     matches = []
     m_num = -1
-    for num in range(2, 8):
+    for num in range(1, 9):
         m, m_num = read('GSCD' + str(num) + '.txt', m_num)
         matches += m
 
@@ -328,6 +355,8 @@ def debug():
 
     matches, player_alls, team_alls, p_ids, t_ids, df_player, df_team = api_crucial()
 
-    tag_names = []
-    for player in player_alls:
-        tag_names.append(player.tag_name)
+    for player in matches[69].players:
+        print(player.tag_name)
+        print(player.race_scores)
+
+debug()

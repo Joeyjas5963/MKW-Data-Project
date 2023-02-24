@@ -1,0 +1,26 @@
+D2_2B,,,,,,,,,,,,,,,,,
+sl,Penalty 0,398,,,,,,,,,,,,,,,
+Purξ,Penalty 0,334,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,Wii Dry Dry Ruins,GCN DK Mountain,GCN Waluigi Stadium,N64 Bowser Castle,GBA Bowser Castle 3,Wii Grumble Volcano,N64 Sherbet Land,DS Peach Gardens,Wii Maple Treeway,GCN Mario Circuit,Wii DK Summit,Wii Toad's Factory
+sam,3227-2325-7238,mii_name,sl,115,FALSE,1,2,1,1,4,1,6,7,2,3,6,8
+brody,1638-1014-2648,mii_name,sl,113,FALSE,3,5,6,7,1,6,5,4,1,2,1,1
+Rerim,2153-4955-9533,mii_name,sl,83,FALSE,4,8,8,4,6,5,2,1,3,6,2,10
+MGB,2840-6892-4571,th,sl,81,FALSE,7,4,3,2,5,4,7,8,4,7,4,3
+Garry,0220-7581-7873,mii_name,sl,6,FALSE,9,9,10,10,10,9,10,10,10,10,10,7
+saky,3699-6752-0444,mii_name,Purξ,96,FALSE,2,3,5,5,8,2,3,2,6,4,5,4
+ayanami,4343-9214-5479,mii_name,Purξ,93,FALSE,5,7,2,3,3,3,8,6,5,1,7,2
+Maxx,4472-7680-2998,mii_name,Purξ,77,FALSE,8,6,4,6,2,8,1,3,8,5,3,5
+L9 Mr Mime,3871-4771-2333,INT,Purξ,56,FALSE,6,1,7,8,7,7,4,5,7,8,8,9
+mephisto ,2582-9914-6578,mii_name,Purξ,12,FALSE,10,10,9,9,9,10,9,9,9,9,9,6
+,,,,,,,,,,,,,,,,,
+https://www.twitch.tv/videos/1728610565,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

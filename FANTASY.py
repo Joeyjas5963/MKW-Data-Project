@@ -36,12 +36,23 @@ def player_calc(df_player, player_all, week):
         player_all.fantasy_spread = dict(player_all.fantasy_spread)
 
 
+def team_calc(team_all):
+
+    score = 0
+
+    for player_list in team_all.players:
+        for player in player_list:
+            score += player.points
+
+    team_all.fantasy = score // 4
+
+
 def leaderboard(player_alls):
 
     score = {}
 
     for player_all in player_alls:
-        score[player_all.name] = player_all.fantasy
+        score[player_all.tag_name] = player_all.fantasy
 
     ds_leaderboard = pd.Series(score).sort_values(ascending=False)
 
@@ -87,6 +98,50 @@ def quick_calc(player_alls, p_ids, df_quick, week):
     return df_quick_num
 
 
+def regular_calc(player_alls, team_alls,  p_ids, t_ids, draft, week):
+
+    print(draft.to_string())
+
+    df_calc = draft.iloc[:, 1:]
+    dct = defaultdict(lambda: [])
+
+    for i in range(len(df_calc.columns)):
+        for j in range(len(df_calc)):
+
+            selection = df_calc.iloc[j, i]
+
+            if selection in p_ids.keys():
+
+                player_all = player_alls[p_ids[selection]]
+                dct[draft.columns[i + 1]].append(player_all.fantasy)
+
+            elif selection in t_ids.keys():
+                team_all = team_alls[t_ids[selection]]
+                dct[draft.columns[i + 1]].append(team_all.fantasy)
+
+            else:
+                print('BRUH')
+                print(selection)
+                dct[draft.columns[i + 1]].append('NA')
+
+    df_regular_num = pd.DataFrame(dct)
+
+    for i in range(len(df_regular_num)):
+        for j in range(len(df_regular_num.columns)):
+            if df_regular_num.iloc[i, j] == 'NA':
+                df_regular_num.iloc[i, j] = 45 * week * 2
+
+    df_regular_num['Choice'] = draft.iloc[:, 0]
+    df_regular_num = df_regular_num.set_index('Choice')
+
+    df_regular_num.loc['Total'] = df_regular_num[:].sum()
+
+    print(df_regular_num.to_string())
+
+    df_totals = df_regular_num.iloc[-1, :].transpose().sort_values(ascending=False)
+    print(df_totals)
+
+
 def quick_check(df_quick, df_quick_num, draft):
 
     nums = df_quick_num.loc[draft]
@@ -103,36 +158,43 @@ def quick_check(df_quick, df_quick_num, draft):
     print(df_draft)
 
 
-def regular_calc(player_alls, p_ids, df_quick, week):
-
-    pass
-
-
 def fantasy_crucial():
 
-    week = 1
-    df_quick = load_qdf('quick.csv')
+    week = 2
+    df_quick = load_qdf('Quick Drafts.csv')
+    draft = load_qdf('Bt Draft.csv')
     matches, player_alls, team_alls, p_ids, t_ids, df_player, df_team = api_crucial()
 
     for player_all in player_alls:
         player_calc(df_player, player_all, week)
 
-    return df_quick, player_alls, p_ids, week
+    for team_all in team_alls:
+        team_calc(team_all)
+
+    return df_quick, draft, player_alls, team_alls, p_ids, t_ids, week
 
 
 def fantasy_main():
 
-    df_quick, player_alls, p_ids, week = fantasy_crucial()
+    df_quick, draft, player_alls, team_alls, p_ids, t_ids, week = fantasy_crucial()
 
-    leaderboard(player_alls)
-    player_alls[p_ids['XI Fox']].show_fantasy()
+    ds_leaderboard = leaderboard(player_alls)
+    print(ds_leaderboard.to_string())
+    #player_alls[p_ids['Sk GamerLife']].show_fantasy()
 
     df_quick_num = quick_calc(player_alls, p_ids, df_quick, week)
     print(df_quick_num.to_string())
 
-    quick_check(df_quick, df_quick_num, 'Sam G')
+    #regular_calc(player_alls, team_alls,  p_ids, t_ids, draft, week)
 
-
+    """
+    while True:
+        p = str(input('Which Person?'))
+        if p == 'n':
+            break
+        else:
+            quick_check(df_quick, df_quick_num, p)
+    """
 
 
 fantasy_main()

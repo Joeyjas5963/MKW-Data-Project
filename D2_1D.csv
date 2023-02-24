@@ -1,0 +1,24 @@
+D2_1D,,,,,,,,,,,,,,,,,
+Mt,Penalty 0,377,,,,,,,,,,,,,,,
+Ma*,Penalty 0,355,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,N64 Sherbet Land,Wii Toad's Factory,Wii Moonview Highway,Wii Luigi Circuit,N64 Bowser's Castle,GBA Bowser Castle 3,Wii Grumble Volcano,DS Peach Gardens,Wii Koopa Cape,GCN Waluigi Stadium,GCN DK Mountain,WII Dry Dry Ruins 
+Skenda,2957-3838-3300,Mt. Skenda,Mt,105,FALSE,4,7,3,8,1,3,5,2,4,5,1,3
+Lonie,2754-7885-4332,Mt. Lonie,Mt,93,FALSE,1,6,5,6,2,6,4,4,6,6,2,2
+Fred,3742-6329-0657,Mt. Fred,Mt,92,FALSE,2,2,7,7,4,2,1,8,1,7,7,6
+Lucid,2325-2956-0053,Mt. Lucid,Mt,82,FALSE,5,1,4,3,7,7,3,7,8,3,5,5
+osf,2110-5461-7108,Mt. osf,Mt,5,FALSE,10,10,9,10,10,10,9,9,10,10,9,9
+cl,1208-6096-2779,Ma* cl,Ma*,125,FALSE,3,3,1,4,3,1,2,5,2,8,3,1
+zn,4000-3340-0334,Ma* Zn,Ma*,83,FALSE,8,4,2,5,6,4,7,1,5,2,6,7
+py,0349-6004-4543,Ma* PY,Ma*,83,FALSE,7,8,8,1,5,5,6,3,3,1,8,4
+chi,0736-1549-6285,Ma* chi,Ma*,57,FALSE,6,5,6,2,8,8,8,6,7,4,4,8
+Burke,2540-0402-9638,Ma* Burke,Ma*,7,FALSE,9,9,10,9,9,9,10,10,9,9,10,10
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

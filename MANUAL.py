@@ -1,7 +1,6 @@
 import csv
 import json
 import pandas as pd
-from MKTBAPI import read
 
 
 def reconstruct(file):
@@ -125,4 +124,4 @@ def reconstruct(file):
         return string
 
 
-j = reconstruct('D2_1A.csv')
+j = reconstruct('D5_2D.csv')

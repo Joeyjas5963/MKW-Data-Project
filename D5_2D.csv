@@ -1,0 +1,26 @@
+D5_2D,,,,,,,,,,,,,,,,,
+Yz,Penalty 0,396,,,,,,,,,,,,,,,
+Lε,Penalty 0,336,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,GBA Bowser Castle 3,N64 Bowser's Castle,N64 DK's Jungle Parkway,Wii Moo Moo Meadows,N64 Sherbet Land,DS Peach Gardens,Wii Mushroom Gorge,Wii Grumble Volcano,Wii Bowser's Castle,SNES Mario Circuit 3,GCN DK Mountain,Wii Moonview Highway
+Leo,4043-2731-4907,mii_name,Yz,134,FALSE,3,1,3,3,2,2,2,1,4,3,2,1
+Dryade,0392-5601-9832,Dryade,Yz,110,FALSE,2,4,1,5,4,3,4,5,5,2,1,2
+Vicious,3957-3713-3566,mii_name,Yz,77,FALSE,5,5,8,8,5,5,5,4,8,4,5,3
+Karim,3225-8846-3079,mii_name,Yz,67,FALSE,8,8,5,7,7,1,3,2,6,8,8,4
+SunnyJimX,2754-7983-0413,mii_name,Yz,8,FALSE,9,9,10,10,10,9,10,9,10,10,10,8
+Tax,3012-4887-7934,mii_name,Lε,101,FALSE,4,2,2,2,6,7,1,3,7,1,6,9
+nubbles,4429-8349-7172,mii_name,Lε,83,FALSE,6,7,4,6,1,8,7,6,1,5,4,5
+USK,3227-2330-1470,mii_name,Lε,72,FALSE,7,6,6,1,8,6,8,8,2,6,3,7
+Deakon,5117-0128-5071,mii_name,Lε,71,FALSE,1,3,7,4,3,4,6,7,3,7,7,10
+Yuto,4902-2759-2768,mii_name,Lε,9,FALSE,10,10,9,9,9,10,9,10,9,9,9,6
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+Team 1/2,Use team name on table bot (technically the tag),,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

@@ -1,0 +1,26 @@
+D3_1A,,,,,,,,,,,,,,,,,
+[L],Penalty 0,372,,,,,,,,,,,,,,,
+GUN,Penalty 0,360,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,N64 Bowser's Castle,DS Peach Gardens,GCN Peach Beach,Wii Moonview Highway,Wii Dry Dry Ruins,Wii Toad's Factory,Wii Bowser's Castle,GCN DK Mountain,N64 Sherbet Land,Wii Wario's Gold Mine,Wii DK Summit,Wii Koopa Cape
+KA,3010-2050-8492,mii_name,[L],121,FALSE,8,6,4,2,1,1,2,2,1,5,2,4
+Solar,4000-3210-5203,Beulah,[L],110,FALSE,4,3,3,5,4,2,1,3,2,8,8,1
+Justin,2368-2338-6841,mii_name,[L],78,FALSE,6,4,6,7,5,5,3,4,7,4,4,3
+Joey,1809-8881-7554,mii_name,[L],57,FALSE,5,8,7,6,3,7,8,6,3,6,5,7
+Maxi,0090-6184-0830,mii_name,[L],6,FALSE,10,9,10,9,9,10,10,9,9,10,9,10
+space,3184-2820-7899,mii_name,GUN,101,FALSE,1,1,5,4,2,4,5,8,6,3,7,2
+NicoFR,1509-2545-7707,mii_name,GUN,95,FALSE,3,7,1,3,6,3,4,1,8,2,6,8
+Fatal,3570-8380-6932,mii_name,GUN,80,FALSE,2,5,8,8,7,6,7,5,5,1,1,5
+Baore,2153-4991-0644,mii_name,GUN,78,FALSE,7,2,2,1,8,8,6,7,4,7,3,6
+Sasa,3869-6197-9069,mii_name,GUN,6,FALSE,9,10,9,10,10,9,9,10,10,9,10,9
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+OVERWRITE EVERY VALUE ABOVE,,,,,,,,,,,,,,,,,
+Team 1/2,Use team name on table bot (technically the tag),,,,,,,,,,,,,,,,
+title str = Division_WeekLetter,,i.e The match in the first row of week 1 for division 3 would be D3_1A,,,,,,,,,,,,,,,
+table_penalty_str = Penalty -#,,i.e The value for a -5 pen on the team will be Penalty -5,,,,,,,,,,,,,,,
+Player names are names on table,,,,,,,,,,,,,,,,,
+"Feel free to leave mii names alone, it's just an argument that needs to be filled out",,,,,,,,,,,,,,,,,
+Tags will always be the team name on table,,,,,,,,,,,,,,,,,
+subbet_out is a boolean (True or False),,,,,,,,,,,,,,,,,
+Track names are the Official Names,,"i.e MT is Wii Maple Treeway, rBC is N64 Bowser's Castle",,,,,,,,,,,,,,,

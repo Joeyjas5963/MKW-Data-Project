@@ -131,10 +131,11 @@ def main():
         match.small_print()
 
     #track_picks(matches)
-    print(matches[-1])
-    match_graph(matches[-1], df_team)
+    print(matches[2])
+
+    while True:
+        index = int(input('index?'))
+        match_graph(matches[index], df_team)
 
 
 main()
-
-
