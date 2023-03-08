@@ -8,6 +8,7 @@ import csv
 import plotly.express as px
 import plotly.graph_objs as go
 import random
+import os
 
 # DATA COLLECTION AND OBJECT CREATION
 
@@ -39,6 +40,7 @@ COLORS = [{'Netherlands': '#FFA500', 'Daisy Squad': '#FF0000',
            'Northwest': '#6495ED', 'Southwest': '#FF0000'}]
 
 
+
 def collect_table_list(file1):
     ''' function which reads list of tables in GSC Master
 
@@ -51,6 +53,7 @@ def collect_table_list(file1):
 
     # opens and reads data from csv
     with open(file1, 'r') as infile:
+        print(file1)
         csv_file = csv.reader(infile, delimiter=',')
 
         data = []
@@ -99,9 +102,12 @@ def collect_table_list(file1):
                             # create team object if it's a team row
                             if j == 7:
                                 team1 = Team(name, gp1, gp2, gp3, pen, points)
+                                #print(team1, name, gp1, gp2, gp3, pen, points)
+                                
 
                             else:
                                 team2 = Team(name, gp1, gp2, gp3, pen, points)
+                                #print(team2, name, gp1, gp2, gp3, pen, points)
 
 
                         else:
@@ -112,12 +118,15 @@ def collect_table_list(file1):
 
                             # creates player object from player
                             p = Player(name, gp1, gp2, gp3, points, placement)
+                            #print(p, name, gp1, gp2, gp3, points, placement)
 
                         # adds player objects to team rosters
                         if 1 < j < 7:
                             team1_players.append(p)
                         elif j > 10:
                             team2_players.append(p)
+                        #print(team1_players)
+                        #print(team2_players)
 
                 count += 1
 
@@ -529,7 +538,12 @@ def neccsary():
     t_ids_D = [0]
 
     for div in divs:
-        file = 'GSC_S4_D' + str(div) + '.csv'
+        print(str(div))
+        #TODO: Make a global variable for the season so that its not hardcoded
+        print(os.getcwd())
+        file = os.path.join(os.getcwd(), 'data', 'S4', 'divs', 'GSC_S4_D' + str(div) + '.csv')
+        #file = os.getcwd() + 'data\\' + 'S4\\' + 
+        print(file)
         matches = collect_table_list(file)
         player_alls, team_alls, p_ids, t_ids = summarize(matches)
         matches_D.append(matches)
@@ -549,7 +563,7 @@ def main():
     #average(player_alls_D)
     #perfect(matches_D)
     #top_scores(matches_D)
-    score_dist(matches_D, False)
+    #score_dist(matches_D, False)
     #wins_five(matches_D, t_ids_D)
     #tunes(matches_D, t_ids_D)
 

@@ -9,6 +9,7 @@ import csv
 import plotly.express as px
 import plotly.graph_objs as go
 import json
+import os
 
 TRACKS = {"Wii Luigi Circuit": 'LC',
           "Wii Moo Moo Meadows": 'MMM',
@@ -333,13 +334,17 @@ def summarize(matches, df_player, df_team):
 
 
 def api_crucial():
-
-    df_player, df_team = db_crucial('P_Data.csv', 'T_Data.csv')
+    players_data_path = os.path.join(os.getcwd(), 'data', 'S4', 'players.csv')
+    teams_data_path = os.path.join(os.getcwd(), 'data', 'S4', 'teams.csv')
+    df_player, df_team = db_crucial(players_data_path, teams_data_path)
+    matches = []
+    m_num = -1
 
     matches = []
     m_num = -1
-    for num in range(1, 9):
-        m, m_num = read('GSCD' + str(num) + '.txt', m_num)
+    num_divs = 8
+    for num in range(1, num_divs + 1):
+        m, m_num = read(os.path.join(os.getcwd(), 'data', 'S5', 'divsJSON', 'GSCD' + str(num) + '.txt'), m_num)
         matches += m
 
     addon = read('blank.txt', m_num, manual=True)
