@@ -124,4 +124,4 @@ def reconstruct(file):
         return string
 
 
-j = reconstruct('D5_2D.csv')
+j = reconstruct(os.path.join(os.get.cwd(), 'data', 'matches', 'D5', 'D5_2D.csv'))
