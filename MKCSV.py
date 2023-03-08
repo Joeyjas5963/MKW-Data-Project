@@ -556,6 +556,116 @@ def neccsary():
     return matches_D, player_alls_D, team_alls_D, p_ids_D, t_ids_D
 
 
+
+def cmpTunesToRealScore(divs):
+    
+    tunes = []
+    real_score = []
+    for div in divs:
+        if div == 0:
+            tunes.append([0])
+            real_score.append([0])
+            continue
+        else:
+            tempTunes = []
+            tempScore = []
+            tempT1TunesScore = 0
+            tempT2TunesScore = 0
+            for match in div:
+                if 'free win' in match.name:
+                    print('Free win detected. Will continue')
+                    continue
+                
+                if match.t1.gp1 > match.t2.gp1:
+                    tempT1TunesScore += 2
+                elif match.t1.gp1 < match.t2.gp1:
+                    tempT2TunesScore += 2
+                else:
+                    tempT1TunesScore += 1
+                    tempT2TunesScore += 1
+
+                if match.t1.gp2 > match.t2.gp2:
+                    tempT1TunesScore += 2
+                elif match.t1.gp2 < match.t2.gp2:
+                    tempT2TunesScore += 2
+                else:
+                    tempT1TunesScore += 1
+                    tempT2TunesScore += 1
+
+                if match.t1.gp3 > match.t2.gp3:
+                    tempT1TunesScore += 2
+                elif match.t1.gp3 < match.t2.gp3:
+                    tempT2TunesScore += 2
+                else:
+                    tempT1TunesScore += 1
+                    tempT2TunesScore += 1
+
+                if match.t1.score > match.t2.score:
+                    tempT1TunesScore += 4
+                elif match.t1.score < match.t2.score:
+                    tempT2TunesScore += 4
+                else:
+                    tempT1TunesScore += 2
+                    tempT2TunesScore += 2
+                
+                if int(match.t1.score) > int(match.t2.score):
+                    tempScore.append(int(match.t1.score) - int(match.t2.score))
+                    tempTunes.append(tempT1TunesScore)
+                elif int(match.t1.score) < int(match.t2.score):
+                    tempScore.append(int(match.t2.score) - int(match.t1.score))
+                    tempTunes.append(tempT2TunesScore)
+                
+                #tempTunes.append(tempT1TunesScore)
+                #tempTunes.append(tempT2TunesScore)
+                #tempScore.append(int(match.t1.score) - int(match.t2.score))
+                #tempScore.append(int(match.t2.score) - int(match.t1.score))
+                tempT1TunesScore = 0
+                tempT2TunesScore = 0
+            
+            tunes.append(tempTunes)
+            real_score.append(tempScore)
+            tempTunes = []
+            tempScore = []
+    if len(tunes) != len(real_score):
+        print('Something is wrong because the scores are not equal') 
+    currDiv = 0
+    numDivs = 8
+
+    for div in range(0, numDivs):
+        if div == 0:
+            print('Continue')
+            continue
+        print(div)
+        divTunes = tunes[div]
+        divScore = real_score[div]
+        if len(divTunes) != len(divScore):
+            print('Something went wrong. len(divTunes) != len(divScore)')
+            break
+        numMatches = len(divScore)
+        t6 = []
+        t8 = []
+        t10 = []
+        for i in range(0, numMatches):
+            if divTunes[i] == 6:
+                t6.append(divScore[i])
+            if divTunes[i] == 8:
+                t8.append(divScore[i])
+            if divTunes[i] == 10:
+                t10.append(divScore[i])
+        m6 = sum(t6) / len(t6)
+        m8 = sum(t8) / len(t8)
+        m10 = sum(t10) / len(t10)
+        print('6 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t6)) + '):', str(m6))
+        print('8 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t8)) + '):', str(m8))
+        print('10 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t10)) + '):', str(m10))   
+        plt.scatter(x = divScore, y = divTunes)
+        plt.title('Runner Score Distribution Across GSC\n' + 'D' + str(div))
+        plt.xlabel('Scores')
+        plt.ylabel('Tunes Points')
+        plt.ylim([5,11])
+        plt.show()
+        currDiv += 1
+
 def main():
 
     matches_D, player_alls_D, team_alls_D, p_ids_D, t_ids_D = neccsary()
@@ -566,6 +676,7 @@ def main():
     #score_dist(matches_D, False)
     #wins_five(matches_D, t_ids_D)
     #tunes(matches_D, t_ids_D)
+    cmpTunesToRealScore(matches_D)
 
 
     #print(len(matches_D[6][30].players))
