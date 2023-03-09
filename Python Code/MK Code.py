@@ -7,6 +7,7 @@ from MKOBJECT import PlayerAll, TeamAll
 import csv
 import plotly.express as px
 import plotly.graph_objs as go
+import os
 
 # DATA COLLECTION AND OBJECT CREATION
 
@@ -22,6 +23,7 @@ def collect_table_list(file1):
 
     # opens and reads data from csv
     with open(file1, 'r') as infile:
+        print('collect_table_list()', file1)
         csv_file = csv.reader(infile, delimiter=',')
 
         data = []
@@ -428,7 +430,7 @@ def main():
     t_ids_D = [0]
 
     for div in divs:
-        file = 'GSC_S4_D' + str(div) + '.csv'
+        file = os.path.join(os.getcwd(), 'data', 'S4', 'divs', 'GSC_S4_D' + str(div) + '.csv')
         matches = collect_table_list(file)
         player_alls, team_alls, p_ids, t_ids = summarize(matches)
         matches_D.append(matches)
