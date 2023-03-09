@@ -538,7 +538,7 @@ def neccsary():
     t_ids_D = [0]
 
     for div in divs:
-        print(str(div))
+        #print(str(div))
         #TODO: Make a global variable for the season so that its not hardcoded
         print(os.getcwd())
         file = os.path.join(os.getcwd(), 'data', 'S4', 'divs', 'GSC_S4_D' + str(div) + '.csv')
@@ -558,7 +558,7 @@ def neccsary():
 
 
 def cmpTunesToRealScore(divs):
-    
+
     tunes = []
     real_score = []
     for div in divs:
@@ -573,7 +573,7 @@ def cmpTunesToRealScore(divs):
             tempT2TunesScore = 0
             for match in div:
                 if 'free win' in match.name:
-                    print('Free win detected. Will continue')
+                    #print('Free win detected. Will continue')
                     continue
                 
                 if match.t1.gp1 > match.t2.gp1:
@@ -633,9 +633,9 @@ def cmpTunesToRealScore(divs):
 
     for div in range(0, numDivs):
         if div == 0:
-            print('Continue')
+            #print('Continue')
             continue
-        print(div)
+        print('D' + str(div))
         divTunes = tunes[div]
         divScore = real_score[div]
         if len(divTunes) != len(divScore):
@@ -657,7 +657,7 @@ def cmpTunesToRealScore(divs):
         m10 = sum(t10) / len(t10)
         print('6 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t6)) + '):', str(m6))
         print('8 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t8)) + '):', str(m8))
-        print('10 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t10)) + '):', str(m10))   
+        print('10 Points avg for D' + str(div) + ' (numMatches: ' + str(len(t10)) + '):', str(m10) + '\n')   
         plt.scatter(x = divScore, y = divTunes)
         plt.title('Runner Score Distribution Across GSC\n' + 'D' + str(div))
         plt.xlabel('Scores')
